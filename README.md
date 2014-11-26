@@ -5,11 +5,14 @@
 1. **Pick an API.**  Some good ones:  Rotten Tomatoes, Yelp, Spotify.  You can also check out sites like [apis.io](apis.io) to find fun APIs.
 2. **Review the documentation for your API.**
   - What data does it provide you? If you're looking at the Spotify API, for example, how would I get a list of all the songs? What attributes about each song does it provide? [**NOTE:** You can practice getting data from the API using the `curl` command on the command line.]
-  - Does the API serve up JSON or ? JSON? XML?
+  - Does the API serve up JSON or XML?
   - Does the API cost money? Does it have a limit on the number of requests you can make per day?
-  - Do I need an API key to access the data?  If so, set up an account to get your key(s). How do I pass my keys to the API when I make a request? (Some APIs, such as the Beer Mapping API we'll use, allow you to pass the key directly into the URL, while others require you to pass it via the request header.)
+  - Do I need an API key to access the data?
+    - If so, set up an account to get your key(s).
+    - How do I pass my keys to the API when I make a request? (Some APIs, such as the Beer Mapping API we'll use, allow you to pass the key directly into the URL, while others require you to pass it via the request header.)
 
 3. **Pick a library to query your API.**  Ruby has the [Net::HTTP](http://ruby-doc.org/stdlib-2.1.5/libdoc/net/http/rdoc/Net/HTTP.html) library, but I'd recommend using a gem like [HTTParty](https://github.com/jnunemaker/httparty) (which I'll use here) or [Faraday](https://github.com/lostisland/faraday).
+  - HTTParty has some nice [example apps](https://github.com/jnunemaker/httparty/tree/master/examples).
 
 ### BUILDING THE APP:
 * **Set your keys.** If you need keys to access the API, use the `dotenv` gem to load your keys. (That way, you're not hardcoding your secret credentials into your app.)
@@ -41,7 +44,7 @@
     ENV['BEER_MAPPING_API_KEY']
     ```
 
-  3. Create a `.env.example` file that lists the *name(s)* of any API keys (or other credentials) that your app uses, but does not include your actual API key.
+  3. Create a `.env.example` file that lists the *name(s)* of any API keys (or other credentials) that your app uses, but does *not* include your actual API key.
 
     ```no-highlight
     # .env.example
@@ -82,9 +85,9 @@
     state_response = HTTParty.get("http://beermapping.com/webservice/locstate/#{ENV['BEER_MAPPING_API_KEY']}/#{state}")
     ```
 
-    If I put a `binding.pry` after hitting up the API, I can check out what my response variables look like and write methods accordingly to retrieve the information I want for various pages on my app.
+    If I put a `binding.pry` after hitting the API, I can check out what my response variables look like and write methods to retrieve the information I want for various pages on my app.
 
-    For example, say I want a search page that allows a user to input a city and get a list of breweries in that area:
+    For example, say I want to allow a user to search for breweries by city on the breweries index page:
 
     ```ruby
     # app.rb
