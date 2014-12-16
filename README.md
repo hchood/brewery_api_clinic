@@ -2,7 +2,7 @@
 
 ### SETUP:
 
-1. **Pick an API.**  Some good ones:  Rotten Tomatoes, Yelp, Spotify.  You can also check out sites like [apis.io](apis.io) to find fun APIs.
+1. **Pick an API.**  Some good ones:  Rotten Tomatoes, Yelp, Spotify.  You can also check out sites like [apis.io](http://apis.io/) to find fun APIs.
 2. **Review the documentation for your API.**
   - What data does it provide you? If you're looking at the Spotify API, for example, how would I get a list of all the songs? What attributes about each song does it provide? [**NOTE:** You can practice getting data from the API using the `curl` command on the command line.]
   - Does the API serve up JSON or XML?
